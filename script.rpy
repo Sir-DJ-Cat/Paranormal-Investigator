@@ -103,21 +103,36 @@ label start:
     menu sub_first_look:
         "Go to..."
         "Guest Bedroom":
-            "Place"
+            "It's a small little room, not furnished much besides the bed."
+            "Doesn't appear to be anything of note in here."
+            jump sub_first_look
         "Master Bedroom":
-            "Place"
+            "This is where most of the hauntings were said to have taken place."
+            "I don't see any writing on the walls, I wonder if they painted over it."
+            jump sub_first_look
         "Nursery":
-            "Place"
+            "Looks like they're preparing for a baby."
+            "There's a lot of stuff on the floor, I guess they haven't finished furnishing."
+            jump sub_first_look
         "Kitchen":
-            "Place"
+            "Not many dishes left out."
+            "And all the knives are missing from the block..."
+            jump sub_first_look
         "Living Room":
-            "Place"
+            "It's a cozy little room."
+            "The magazines on the table appear to be undisturbed."
+            jump sub_first_look
         "Dining Room":
-            "Place"
+            "This room appears to be norma-"
+            # play sound "abby_screech.mp3"
+            # ending the menu here to start the ghost hunt
         "Garage":
-            "Place"
+            "It's so cold in here."
+            "I think it's the lack of insulation rather than a ghost though."
+            jump sub_first_look
+
     label after_sub_first_look:
-        "Meow meow silly"
+        "What was that?!"
 
     # This ends the game.
 
