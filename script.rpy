@@ -69,7 +69,7 @@ label start:
         "Why yes it is!":
             idk "Oh great! I need your help."
         "Sorry, wrong number.":
-            "Why would you pass up a job?"
+            "Why would I pass up a job?"
             jump jared_call
     label after_jared_call:
         idk "My name is Jared, and my wife and I just moved into a new home."
@@ -95,11 +95,29 @@ label start:
             jump jared_call_final_question
     label after_jared_call_final_question:
         "Time to paranormal the investigate"
-        
-    # These display lines of dialogue.
+    "Something about traveling here"
 
-    # e "You've created a new Ren'Py game."
-    # e "Once you add a story, pictures, and music, you can release it to the world!"
+    scene bg room # Entryway
+
+    "Time to take a look around"
+    menu sub_first_look:
+        "Go to..."
+        "Guest Bedroom":
+            "Place"
+        "Master Bedroom":
+            "Place"
+        "Nursery":
+            "Place"
+        "Kitchen":
+            "Place"
+        "Living Room":
+            "Place"
+        "Dining Room":
+            "Place"
+        "Garage":
+            "Place"
+    label after_sub_first_look:
+        "Meow meow silly"
 
     # This ends the game.
 
