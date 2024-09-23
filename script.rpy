@@ -148,7 +148,26 @@ label start:
     menu abby_hunt:
         "What do you do?"
         "Hide":
-            "Place"
+            menu abby_hide:
+                "Where do you hide?"
+                "Hall Closet":
+                    "You quickly run around the corner into the hall closet."
+                    "You can hear the ghost looking around outside"
+                    idk "WHERE ARE YOU?!"
+                    "..."
+                    idk "HAVE YOU LEFT ME AGAIN?!"
+                    "..."
+                    "..."
+                    # play sound "abby_cry.mp3"
+                    "There's a soft crying coming from outside."
+                    menu abby_closet:
+                        "What do you do?"
+                        "Step out":
+                            jump after_abby_hunt
+                "Master Bedroom":
+                    "NOOOO"
+                "Guest Bedroom":
+                    "gud"
         "Attack (uses money)":
             "Pew pew"
         "Invoke Name" if abby_name:
