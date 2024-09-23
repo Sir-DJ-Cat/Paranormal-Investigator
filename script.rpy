@@ -15,6 +15,7 @@ define Malerie = Character("Malerie")
 
 # Side Characters
 define ll = Character("Landlord")
+define jared = Character("Jared")
 
 # The game starts here.
 
@@ -25,6 +26,7 @@ label start:
     # images directory to show it.
 
     scene bg room
+    play music "detective_office.wav"
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -49,7 +51,26 @@ label start:
             ll "And you're late on your rent payments...AGAIN!"
     label after_menu:
         p1 "Oh...sorry about that."
-    "Test 2"
+    ll "You have until Friday to pay up."
+    ll "Otherwise I'm kicking you out for good!"
+    # play sound "phoneclick.mp3"
+    "*click*"
+    "That only gives me 5 days to find a job..."
+    "As if one job would pay for everything."
+    # play sound "phonering.mp3"
+    "*ring ring*"
+    "What now..."
+    p1 "Hello?"
+    idk "Um...hi?"
+    p1 "Yes?"
+    idk "Is this the Paranormal Investigator's office?"
+    menu jared_call:
+        "Say..."
+        "Why yes it is!":
+            idk "Oh great! I need your help."
+        "Sorry, wrong number.":
+            "Why would you pass up a job?"
+            jump jared_call
 
     # These display lines of dialogue.
 
