@@ -71,7 +71,31 @@ label start:
         "Sorry, wrong number.":
             "Why would you pass up a job?"
             jump jared_call
-
+    label after_jared_call:
+        idk "My name is Jared, and my wife and I just moved into a new home."
+        jared "And there's been a lot of...strange activity."
+    menu jared_call_questions:
+        "Ask..."
+        "What sort of activity?":
+            jared "Well, at first it was just furniture being moved around."
+            jared "But later we noticed strange writing on the wall."
+            p1 "Writing?"
+            jared "Y-yeah. Things like \"HE LOVES ME NOT\" and \"BLED AT THE ALTAR\""
+            p1 "Interesting..."
+    label after_jared_call_questions:
+        jared "Do you think you could come take a look?"
+    menu jared_call_final_question:
+        "Say..."
+        "I sure can.":
+            jared "Great! When can you come?"
+            p1 "I'll come right away."
+            jared "Perfect, see you soon!"
+        "I don't think so.":
+            "I really need this job..."
+            jump jared_call_final_question
+    label after_jared_call_final_question:
+        "Time to paranormal the investigate"
+        
     # These display lines of dialogue.
 
     # e "You've created a new Ren'Py game."
