@@ -82,6 +82,12 @@ label start:
             p1 "Writing?"
             jared "Y-yeah. Things like \"HE LOVES ME NOT\" and \"BLED AT THE ALTAR\""
             p1 "Interesting..."
+            $ abby_name = False
+        "Do you have any records from the previous owners?":
+            jared "Yeah, actually."
+            jared "There was only one previous owner, a woman named Abby."
+            $ abby_name = True
+            p1 "Anything else?"
     label after_jared_call_questions:
         jared "Do you think you could come take a look?"
     menu jared_call_final_question:
@@ -133,6 +139,22 @@ label start:
 
     label after_sub_first_look:
         "What was that?!"
+    "Suddenly the room becomes very cold."
+    "The sliding glass door in front of you starts cracking as if it's being hit."
+    # play sound "abby_screech.mp3"
+    "Blood splatters across the glass door as a woman screams."
+    "A woman wearing a bloodstained wedding dress floats through the door."
+    idk "COME BACK TO BREAK MY HEART?!"
+    menu abby_hunt:
+        "What do you do?"
+        "Hide":
+            "Place"
+        "Attack (uses money)":
+            "Pew pew"
+        "Invoke Name" if abby_name:
+            "Hewwoo"
+    label after_abby_hunt:
+        "Wowza"
 
     # This ends the game.
 
