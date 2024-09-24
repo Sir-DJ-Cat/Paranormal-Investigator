@@ -201,7 +201,91 @@ label start:
             "The ghost suddenly withdraws and collapses on the ground."
             # play sound "abby_cry.mp3"
     label after_abby_hunt:
-        "Wowza"
+        # Wowza
+        "You look at the strange ghost woman crying on the ground."
+    "You notice the temperature is no longer freezing."
+    menu abby_hello:
+        "What do you say?"
+        "Hello?":
+            "She looks up at you, her face no longer angry and distorted."
+            idk "h-h-hello?"
+            p1 "Hi. What's your name?"
+            idk "..."
+            if abby_name:
+                idk "Well as you said earlier, my name is Abby."
+            else:
+                abby "Abby. My name is Abby."
+        "Are you OK?":
+            "The girl nods without looking up."
+            p1 "Did I hurt you?"
+            "There's no response."
+            "Slowly the girl stands up and looks at you, her face no longer angry and distorted."
+            idk "Hi..."
+            p1 "Who are you?"
+            if abby_name:
+                idk "Well as you said earlier, my name is Abby."
+            else:
+                abby "I'm Abby."
+        "Get up.":
+            "The girl does not respond."
+            p1 "C'mon, stop crying and get up."
+            "The girl slowly gets up and looks at you."
+            "Her face is no longer angry and distorted, but she still looks unhappy.."
+            idk "What do you want?"
+            p1 "What is your name?"
+            if abby_name:
+                idk "Well as you said earlier, my name is Abby."
+            else:
+                abby "My name is Abby."
+    label after_abby_hello:
+        p1 "Well Abby, I'm not sure if you've noticed"
+    p1 "But your haunting of this place is causing a lot of issues."
+    abby "..."
+    abby "I'm sorry."
+    abby "As you've noticed, I'm dead."
+    abby "I don't know how it happened exactly but..."
+    abby "Sometimes I lose control, and become some sort of monster."
+    p1 "I noticed."
+    "There's a moment of silence."
+    p1 "Well if you don't mind, I can try to help you out."
+    abby "Really? You'd do that for me?"
+    abby "...even after I freaked out on you?"
+    menu abby_really:
+        "What do you say?"
+        "Of course.":
+            abby "Wow, thanks!"
+            "..."
+            abby "So, um, what all are you going to do?"
+            p1 "I'm going to have a look around and see if I can find any clues."
+            abby "Clues?"
+            p1 "As to how you died."
+            abby "Oh..."
+            p1 "And of course, if you remember anything that would be very helpful."
+            abby "Right, I'll do my best."
+        "On second thought...":
+            p1 "Let me do my job."
+            abby "Oh...ok."
+            abby "Just, um, let me know if you need me..."
+    label after_abby_really:
+        "Now then, where to start..."
+        "I don't have too much time."
+        "I can probably only look at 4 rooms."
+    menu sub_ghost_look:
+        "Go to..."
+        "Guest Bedroom":
+            "Place."
+        "Master Bedroom":
+            "Place."
+        "Nursery":
+            "Place."
+        "Kitchen":
+            "Place."
+        "Living Room":
+            "Place."
+        "Dining Room":
+            "Place."
+        "Garage":
+            "Place."
 
     # This ends the game.
 
