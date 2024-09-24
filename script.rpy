@@ -268,16 +268,115 @@ label start:
             abby "Just, um, let me know if you need me..."
     label after_abby_really:
         "Now then, where to start..."
-        "I don't have too much time."
-        "I can probably only look at 4 rooms."
+    "I don't have too much time."
+    "I can probably only look at 4 rooms."
+    $ sub_rooms = 4
     menu sub_ghost_look:
         "Go to..."
         "Guest Bedroom":
-            "Place."
+            $ sub_rooms -= 1
+            "You walk into the Guest Bedroom."
+            abby "I wasn't in here that much..."
+            p1 "Do you remember who stayed in here?"
+            abby "Hmmm..."
+            "She takes a look around, looking for some object to jog her memory."
+            "Abby stops and stares at the circular red carpet beneath the bed."
+            abby "I remember that..."
+            p1 "What is it?"
+            abby "This was my friend's room. We shared the house."
+            abby "I told her the carpet was too small and didn't match the paint."
+            p1 "..."
+            abby "That's probably not very helpful..."
+            p1 "Maybe we could find your friend? She might know more about your death."
+            abby "Maybe...I don't remember her ever coming back after I died."
+            jump sub_ghost_look
         "Master Bedroom":
-            "Place."
+            $ sub_rooms -= 1
+            "You walk into the Master Bedroom."
+            abby "I know this room, it's mine!"
+            "..."
+            abby "Or was..."
+            "You notice the writing on the wall that Jared had mentioned earlier."
+            p1 "Let's take a look around."
+            menu sub_master_look:
+                "Investigate..."
+                "Dresser":
+                    "This dresser is made of antique wood."
+                    "Inside the back of the top drawer there appears to be a clothing tag."
+                    abby "Hey, that's mine."
+                    p1 "What?"
+                    abby "The tag for my wedding dress."
+                    p1 "Oh..."
+                    "The tag has a company name you've never heard of on it."
+                    jump sub_master_look
+                "Nightstand":
+                    "The nightstand seems quite old."
+                    abby "I didn't have a safe, so this is where I'd keep my valuables."
+                    "The drawers, however, are empty."
+                    abby "Man, I really thought there'd be something in there..."
+                    "..."
+                    abby "Wait! Pull it out!"
+                    p1 "???"
+                    abby "The dresser, pull it out from the wall."
+                    "Your weak body somehow manages to pull the dresser away from the wall."
+                    abby "Look on the back."
+                    "There's a small, rectangle indent on the back."
+                    "You push it in and it falls out, revealing a hidden compartment."
+                    abby "Aha! I told you."
+                    "You reach in there and pull out a small diamond wedding ring."
+                    abby "..."
+                    # add more here
+                    jump sub_master_look
+                # maybe one more place to check out here?
+                "I'm done in this room.":
+                    jump sub_ghost_look
+            # that ends the master bedroom
         "Nursery":
-            "Place."
+            $ sub_rooms -= 1
+            "You walk into the Nursery."
+            abby "Aw, how cute."
+            p1 "You realize you were haunting this earlier, right?"
+            abby "Yeahh, but that wasn't *really* me."
+            abby "..."
+            abby "Was it?"
+            p1 "Let's look around."
+            menu sub_nursery_look:
+                "Investigate..."
+                "Crib":
+                    "It's a small, light blue crib. Appears to be new."
+                    abby "Aw, look at this little crib."
+                    p1 "Recognize it?"
+                    abby "No, but I like it."
+                    p1 "..."
+                    abby "I always wanted to have kids."
+                    abby "Too bad I was...you know."
+                    jump sub_nursery_look
+                "Bookshelf":
+                    "It's a light blue bookshelf, smaller than a normal one would be."
+                    abby "This looks nice. I wonder what books will be in there."
+                    p1 "Doesn't seem too relevant."
+                    abby "I guess not..."
+                    "As you turn away, a glint from underneath it catches your eye."
+                    "You crouch down and see a small chain sticking out from underneath the bookshelf."
+                    "The chain is pulled out and is revealed to be attached to a locket."
+                    abby "Hey, that's my locket. I thought I lost it."
+                    p1 "Lost it?"
+                    abby "The day of my wedding I lost my locket...I don't remember much after that."
+                    "You open it up and see a picture of a man and Abby next to each other. It looks like a professional photo."
+                    # play sound "abby_screech.mp3"
+                    "You turn around to see Abby transformed back into the monster you saw earlier."
+                    abby "YOU DARE SHOW YOUR FACE HERE?"
+                    abby "DID YOU NOT GET YOUR HAPPILY EVER AFTER?"
+                    p1 "Abby calm down! I'm not who you think I am!" # this feels like a cop out but im tired
+                    "Abby shifts back to normal and looks down, ashamed."
+                    abby "I'm sorry, I don't know what came over me."
+                    p1 "I think it was this picture."
+                    abby "The one of me and my...fiance..."
+                    p1 "Do you think he was the one who killed you?"
+                    # add more here
+                    jump sub_nursery_look
+                "I'm done in this room.":
+                    jump sub_ghost_look
         "Kitchen":
             "Place."
         "Living Room":
@@ -285,7 +384,42 @@ label start:
         "Dining Room":
             "Place."
         "Garage":
-            "Place."
+            $ sub_rooms -= 1
+            "You walk into the Garage."
+            abby "I never liked this place, always too cold."
+            p1 "As garages tend to be."
+            p1 "Let's take a look around"
+            menu sub_garage_look:
+                "Investigate..."
+                "Toolbench":
+                    "The red metal toolbench seems largely untouched."
+                    abby "I'm not sure anyone's ever used this."
+                    abby "...wait. No someone did use this."
+                    p1 "Who?"
+                    abby "I...I don't remember."
+                    p1 "Hmm, let's keep looking."
+                    jump sub_garage_look
+                "Paint Cans":
+                    "There's a bunch of empty paint cans sitting in the corner."
+                    abby "I remember planning to paint the house."
+                    abby "I don't think I ever got around to it though..."
+                    "They seem to be arranged in a pyramid, as if concealing something."
+                    "You take the top can off and put it to the side."
+                    abby "What's that?"
+                    "It appears to be a broken sledgehammer."
+                    p1 "Were you planning to do some demolition as well?"
+                    abby "No...I don't even remember buying that. Or having it in here at all."
+                    p1 "By the way the cans were stacked, it seems someone was intentionally trying to hide it."
+                    abby "But why..."
+                    p1 "I'm not sure, let's keep looking."
+                    jump sub_garage_look
+                # another place maybe? or is 2 for each enough?
+                "I'm done in this room":
+                    jump sub_ghost_look
+            # done with the garage
+
+    label after_sub_ghost_look:
+        "Skibidi."
 
     # This ends the game.
 
