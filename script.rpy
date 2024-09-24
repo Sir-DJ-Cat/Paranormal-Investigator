@@ -10,8 +10,8 @@ define p1 = Character("You")
 # Ghosts
 define abby = Character("Abby")
 define magnus = Character("Magnus")
-define Hugh = Character("Hugh")
-define Malerie = Character("Malerie")
+define hugh = Character("Hugh")
+define malerie = Character("Malerie")
 
 # Side Characters
 define ll = Character("Landlord")
@@ -165,13 +165,41 @@ label start:
                         "Step out":
                             jump after_abby_hunt
                 "Master Bedroom":
-                    "NOOOO"
+                    "You quickly rush to the master bedroom, closing the door and hiding behind the bed."
+                    # play sound "abby_hum.mp3"
+                    "You hear someone humming outside, a sound that seems to be getting closer."
+                    "The door creaks open as the humming stops."
+                    "The room is silent..."
+                    # play sound "abby_screech.mp3"
+                    "The ghost appears in front of you and goes to attack."
+                    jump abby_hide
                 "Guest Bedroom":
-                    "gud"
+                    "You turn the corner and run to the guest bedroom by the entryway."
+                    "You hide in the corner behind the small bed."
+                    idk "WHERE DID YOU GO?!"
+                    "..."
+                    idk "HAVE YOU LEFT ME AGAIN?!"
+                    "..."
+                    "..."
+                    # play sound "abby_cry.mp3"
+                    "There's a soft crying coming from outside."
+                    jump abby_closet
         "Attack (uses money)":
-            "Pew pew"
+            "You whip out your incense and lighter."
+            p1 "Better stay back!"
+            "You light the incense and it's smell quickly fills the room."
+            # play sound "abby_screech.mp3"
+            "The ghost shrieks and immediately retreats."
+            idk "WHY?! WHY ARE YOU HURTING ME AGAIN?!"
+            # play sound "abby_cry.mp3"
+            "The ghost falls to the ground, weeping."
+            jump after_abby_hunt
         "Invoke Name" if abby_name:
-            "Hewwoo"
+            "You remember the name that was mentioned by Jared earlier."
+            p1 "I invoke your true name:"
+            p1 "ABBY"
+            "The ghost suddenly withdraws and collapses on the ground."
+            # play sound "abby_cry.mp3"
     label after_abby_hunt:
         "Wowza"
 
