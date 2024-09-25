@@ -185,6 +185,7 @@ label start:
                     "There's a soft crying coming from outside."
                     jump abby_closet
         "Attack (uses money)":
+            # some money variable idk
             "You whip out your incense and lighter."
             p1 "Better stay back!"
             "You light the incense and it's smell quickly fills the room."
@@ -271,6 +272,7 @@ label start:
     "I don't have too much time."
     "I can probably only look at 4 rooms."
     $ sub_rooms = 4
+    $ found_sledge = False
     menu sub_ghost_look:
         "Go to..."
         "Guest Bedroom" if sub_rooms > 0:
@@ -394,7 +396,7 @@ label start:
                 "Investigate..."
                 "Knife block":
                     $ knife_checked = True
-                    "The knife block you noticed was empty earlier, now has a single butcher knife occupying one of the slots."
+                    "The knife block you noticed was empty earlier, now has a single *look up knife type* knife occupying one of the slots." # whatever micheal myers has
                     p1 "Does that knife look familiar?"
                     abby "Not paticulary."
                     "You take the knife out and find the end dripping with blood."
@@ -482,7 +484,6 @@ label start:
                     jump sub_ghost_look
         "Garage" if sub_rooms > 0:
             $ sub_rooms -= 1
-            $ found_sledge = False
             "You walk into the Garage."
             abby "I never liked this place, always too cold."
             p1 "As garages tend to be."
@@ -534,7 +535,15 @@ label start:
     # office
     scene bg room
 
-    "CONFIRMING THAT NOTHING IS BROKEN AND THE GAME CAN END"
+    # "CONFIRMING THAT NOTHING IS BROKEN AND THE GAME CAN END"
+
+    "Well that was certainly interesting." # goofy ahh
+    "I'll have to think about how to handle the situation."
+    "I can let Abby stay there, but I don't think I'll get paid." # romance options later (just kidding) (not really) (:3)
+    "I can exorcise her, which would kill her but I'd get paid." # no loyalty
+    "I do have the materials to free her, but only enough to do it once. (I might need it for future jobs.)" # this makes no sense
+    "Let me sleep on it..."
+    # fade or something???
 
     # This ends the game.
 
