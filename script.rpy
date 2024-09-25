@@ -16,7 +16,6 @@ define malerie = Character("Malerie")
 # Side Characters
 define ll = Character("Landlord")
 define jared = Character("Jared")
-define sean = Character("Sean")
 
 # The game starts here.
 
@@ -73,7 +72,7 @@ label start:
             "Why would I pass up a job?"
             jump jared_call
     label after_jared_call:
-        idk "My name is Jared, and my wife and I just moved into a new home."
+        idk "My name is Jared, my wife and I just moved into a new home."
         jared "And there's been a lot of...strange activity."
     menu jared_call_questions:
         "Ask..."
@@ -86,27 +85,27 @@ label start:
             $ abby_name = False
         "Do you have any records from the previous owners?":
             jared "Yeah, actually."
-            jared "There was only one previous owner, a woman named Abby."
+            jared "There was only one previous owner, a woman named Abby, she lived with a roommate before it was sold to us."
             $ abby_name = True
             p1 "Anything else?"
     label after_jared_call_questions:
         jared "Do you think you could come take a look?"
     menu jared_call_final_question:
         "Say..."
-        "I sure can.":
-            jared "Great! When can you come?"
-            p1 "I'll come right away."
-            jared "Perfect, see you soon!"
+        "Of course, I'll need the night alone to look around.":
+            jared "Perfect, we're already at a Hotel, When can you come?"
+            p1 "I'll be right over."
+            jared "Thank you, thank you! Call me if you need anything, /he Repeats his Phone Number for you/"
         "I don't think so.":
             "I really need this job..."
             jump jared_call_final_question
     label after_jared_call_final_question:
         "Time to paranormal the investigate"
-    "Something about traveling here"
+        "I get into my Sedan, loaded up with some of the essentials, and drive to the address..."
 
     scene bg room # Entryway
 
-    "Time to take a look around"
+    "Time to take a look around, a Cold-spot is an easy sign to look for in a heated building..."
     menu sub_first_look:
         "Go to..."
         "Guest Bedroom":
@@ -186,7 +185,6 @@ label start:
                     "There's a soft crying coming from outside."
                     jump abby_closet
         "Attack (uses money)":
-            # some money variable idk
             "You whip out your incense and lighter."
             p1 "Better stay back!"
             "You light the incense and it's smell quickly fills the room."
@@ -200,44 +198,54 @@ label start:
             "You remember the name that was mentioned by Jared earlier."
             p1 "I invoke your true name:"
             p1 "ABBY"
-            "The ghost suddenly withdraws and collapses on the ground."
+            "The ghost slowly calms down with a twisted look of realization, and pathetically collapses on the ground."
             # play sound "abby_cry.mp3"
     label after_abby_hunt:
-        # Wowza
+        # Wowza (wowza)
         "You look at the strange ghost woman crying on the ground."
-    "You notice the temperature is no longer freezing."
+    "You notice the temperature is no longer freezing, colder than the surrounding rooms- but bearable."
     menu abby_hello:
         "What do you say?"
         "Hello?":
-            "She looks up at you, her face no longer angry and distorted."
-            idk "h-h-hello?"
-            p1 "Hi. What's your name?"
-            idk "..."
-            if abby_name:
-                idk "Well as you said earlier, my name is Abby."
+            "She looks up at you, her face no longer angry and distorted, but entirely distraught."
+            if abby_name:        
+                abby "h-h-hello?"
+                p1 "Hi. What's your name?"
+                abby "..."
+                abby "Well as you said earlier, my name is Abby."
             else:
                 abby "Abby. My name is Abby."
         "Are you OK?":
-            "The girl nods without looking up."
-            p1 "Did I hurt you?"
-            "There's no response."
-            "Slowly the girl stands up and looks at you, her face no longer angry and distorted."
-            idk "Hi..."
-            p1 "Who are you?"
             if abby_name:
-                idk "Well as you said earlier, my name is Abby."
+                "Abby nods without looking up."
+                p1 "Did I hurt you?"
+                "There's no response."
+                "Slowly Abby stands up and looks at you, her face no longer angry and distorted, but confused, maybe annoyed, you can't really tell you don't talk to many girls.."
+                abby "Hi..."
+                p1 "Who are you?"
+                abby "Well as you said earlier, my name is Abby."
             else:
+                p1 "Did I hurt you?"
+                "There's no response."
+                "Slowly the girl stands up and looks at you, her face no longer angry and distorted, but confused, maybe annoyed, you can't really tell; you don't talk to many girls.."
+                p1 "who are you?"
                 abby "I'm Abby."
         "Get up.":
+            if abby_name:
+                "Abby does not respond."
+                p1 "C'mon, Abby, please stop crying and get up."
+                 "Abby Looks up at you hopelessly while sobbing, eventually resolving enough to hold back her ghastly tears and stand"
+                 "Her face is no longer angry and distorted, but she still looks unhappy..."
+                 abby "What do you want?" 
+                 p1 "What is your name?"
+                abby "Well as you said earlier, my name is Abby."
+            else:
             "The girl does not respond."
             p1 "C'mon, stop crying and get up."
-            "The girl slowly gets up and looks at you."
+            "The girl burrows her face into her arms even more initially, but is finally resolved enough to face you, and slowly gets up, looking at you."
             "Her face is no longer angry and distorted, but she still looks unhappy.."
             idk "What do you want?"
             p1 "What is your name?"
-            if abby_name:
-                idk "Well as you said earlier, my name is Abby."
-            else:
                 abby "My name is Abby."
     label after_abby_hello:
         p1 "Well Abby, I'm not sure if you've noticed"
@@ -245,6 +253,7 @@ label start:
     abby "..."
     abby "I'm sorry."
     abby "As you've noticed, I'm dead."
+    p1 "/you nod moronically like this is new information/"
     abby "I don't know how it happened exactly but..."
     abby "Sometimes I lose control, and become some sort of monster."
     p1 "I noticed."
@@ -273,7 +282,6 @@ label start:
     "I don't have too much time."
     "I can probably only look at 4 rooms."
     $ sub_rooms = 4
-    $ found_sledge = False
     menu sub_ghost_look:
         "Go to..."
         "Guest Bedroom" if sub_rooms > 0:
@@ -397,7 +405,7 @@ label start:
                 "Investigate..."
                 "Knife block":
                     $ knife_checked = True
-                    "The knife block you noticed was empty earlier, now has a single *look up knife type* knife occupying one of the slots." # whatever micheal myers has
+                    "The knife block you noticed was empty earlier, now has a single butcher knife occupying one of the slots."
                     p1 "Does that knife look familiar?"
                     abby "Not paticulary."
                     "You take the knife out and find the end dripping with blood."
@@ -485,6 +493,7 @@ label start:
                     jump sub_ghost_look
         "Garage" if sub_rooms > 0:
             $ sub_rooms -= 1
+            $ found_sledge = False
             "You walk into the Garage."
             abby "I never liked this place, always too cold."
             p1 "As garages tend to be."
@@ -536,48 +545,7 @@ label start:
     # office
     scene bg room
 
-    # "CONFIRMING THAT NOTHING IS BROKEN AND THE GAME CAN END"
-
-    "Well that was certainly interesting." # goofy ahh
-    "I'll have to think about how to handle the situation."
-    "I can let Abby stay there, but I don't think I'll get paid." # romance options later (just kidding) (not really) (:3)
-    "I can exorcise her, which would kill her but I'd get paid." # no loyalty
-    "I do have the materials to free her, but only enough to do it once. (I might need it for future jobs.)" # this makes no sense
-    "Let me sleep on it..."
-    # fade or something???
-
-    scene bg room
-
-    "What a beautiful morning" # it's raining
-    "Time to think about what happened yester-"
-    # play sound "phone_ring.mp3"
-    "*ring ring*"
-    "What now?"
-    idk "Hello? Hello?" # fnaf-ahh dialogue 
-    p1 "Hello, Paranormal Investigator's office."
-    idk "Glad I got the right number, I require your services immediately!"
-    p1 "How can I help you sir?"
-    idk "Well how do you think?! I need a ghost gone."
-    p1 "Ah, right." # internal monologue thinking that this guy is an ass
-    sean "My name is Sean, I represent the state property bureau." # no idea what the real life equivilent is, IRS?
-    sean "We're trying to bulldoze a property but our workers won't get near it. They claim its' \"haunted\""
-    p1 "I see."
-    menu sean_call_questions:
-        "Ask..."
-        "What sort of activity have they experienced?":
-            sean "Do I look like I care?" # intentional
-            sean "*audible sigh* Look all they said is that there was some sort of screaming?"
-            sean "And apparently there's strange symbols being drawn on the walls."
-            p1 "Have you verified these claims yourself?"
-            sean "Well, um, no I didn't give them any validity."
-            sean "However if having some ectoplasm gumshoe check it out will speed this up then I'm all for it." # add deragatory term for Paranormal Investigator here
-        "Do you have any records from the previous owner?":
-            sean "We have "
-    label after_sean_call_questions:
-        "place"
-    "place"
-    p1 "MEOW MEOW SILLY TIME catJam" # this seems realistic
-
+    "CONFIRMING THAT NOTHING IS BROKEN AND THE GAME CAN END"
 
     # This ends the game.
 
