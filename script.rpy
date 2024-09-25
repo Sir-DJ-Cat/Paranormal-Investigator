@@ -16,6 +16,7 @@ define malerie = Character("Malerie")
 # Side Characters
 define ll = Character("Landlord")
 define jared = Character("Jared")
+define sean = Character("Sean")
 
 # The game starts here.
 
@@ -544,6 +545,39 @@ label start:
     "I do have the materials to free her, but only enough to do it once. (I might need it for future jobs.)" # this makes no sense
     "Let me sleep on it..."
     # fade or something???
+
+    scene bg room
+
+    "What a beautiful morning" # it's raining
+    "Time to think about what happened yester-"
+    # play sound "phone_ring.mp3"
+    "*ring ring*"
+    "What now?"
+    idk "Hello? Hello?" # fnaf-ahh dialogue 
+    p1 "Hello, Paranormal Investigator's office."
+    idk "Glad I got the right number, I require your services immediately!"
+    p1 "How can I help you sir?"
+    idk "Well how do you think?! I need a ghost gone."
+    p1 "Ah, right." # internal monologue thinking that this guy is an ass
+    sean "My name is Sean, I represent the state property bureau." # no idea what the real life equivilent is, IRS?
+    sean "We're trying to bulldoze a property but our workers won't get near it. They claim its' \"haunted\""
+    p1 "I see."
+    menu sean_call_questions:
+        "Ask..."
+        "What sort of activity have they experienced?":
+            sean "Do I look like I care?" # intentional
+            sean "*audible sigh* Look all they said is that there was some sort of screaming?"
+            sean "And apparently there's strange symbols being drawn on the walls."
+            p1 "Have you verified these claims yourself?"
+            sean "Well, um, no I didn't give them any validity."
+            sean "However if having some ectoplasm gumshoe check it out will speed this up then I'm all for it." # add deragatory term for Paranormal Investigator here
+        "Do you have any records from the previous owner?":
+            sean "We have "
+    label after_sean_call_questions:
+        "place"
+    "place"
+    p1 "MEOW MEOW SILLY TIME catJam" # this seems realistic
+
 
     # This ends the game.
 
