@@ -3,6 +3,8 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+# stp cursing - fiona
+
 # Generic
 define idk = Character("???")
 define p1 = Character("You")
@@ -582,14 +584,94 @@ label start:
             sean "And apparently there's strange symbols being drawn on the walls."
             p1 "Have you verified these claims yourself?"
             sean "Well, um, no I didn't give them any validity."
-            sean "However if having some ectoplasm gumshoe check it out will speed this up then I'm all for it." # add deragatory term for Paranormal Investigator here
+            sean "However if having some ecto gumshoe check it out will speed this up then I'm all for it." # add deragatory term for Paranormal Investigator here
         "Do you have any records from the previous owner?":
-            sean "We have "
+            sean "The previous owner was a private corporation, don't remember the name."
+            sean "They ran an insane asy- sorry, \"Mental Hospital\"."
+            sean "Probably just did it for the government payouts but I'm not one to judge." # there's another word I'm thinking of here but can't recall it
+            sean "Place got shut down in the mid 1900s due to health violations."
+            sean "There were so few regulations I'm sure that wasn't unfounded."             
     label after_sean_call_questions:
-        "place"
-    "place"
-    p1 "MEOW MEOW SILLY TIME catJam" # this seems realistic
+        sean "Anyways, enough of this chit-chat. Can you come out here?"
+    p1 "Of course, I'll head out right now."
+    "more traveling dialogue"
 
+    scene bg room
+    "You arrive at the old \"mental hospital\"".
+    "There's a sign out front that's overgrown with vines, it's text having faded over the years."
+    "Damn this place looks spooky..." # average phasmo player doing apoc challenge on sunnyside
+    menu mental_first_look:
+        "Go to..."
+        "Reception":
+            "There's an old wooden desk decaying in the middle of the room."
+            "Vines and moss cover the walls adn the broken wooden floordboards."
+            "Something makes me think no one's kept this place up." # wow what a zinger
+        "Solitary Confinement":
+            "It's a white padded room, but the padding is all ripped and stained."
+            "Eerily quiet here..."
+        "Staff Room":
+            "A very cramped room. There's a small round table and a single chair in the corner."
+            "There's a cupboard full of various medical supplies, miracle it hasn't been looted by now."
+        "Examination Room":
+            "A sqaure room with tile walls. There's a single examination chair in the center."
+            "There's a pool of dried blood at the feet of the chair, and the chair itself has quite a few...scratch marks?"
+            "As you turn to leave you notice the same scratch marks on the walls and door."
+    label after_mental_first_look: # this next part feels way too long but idk
+        "After investigating osme of the main rooms you begin inspecting some of the patient \"rooms\"."
+        "You're unsure if it's merely the age and state of the buildings but the rooms look more like prison cells...barebone cells at that."
+        "You come across a room whose door has numerous white scratches and markings."
+        "The little window on it is blacked out as well."
+        "After a moment of hesitation (this place is *really* creepy after all), you open the door and step inside."
+        "You're immediately met with a blast of cold air."
+        "You begin to step inside when the room is engulfed in fire."
+        "An inhuman scream comes out of nowhere as the fire rages closer to you."
+        "Then, out of the flames the ghostly form of a young man rises."
+        idk "YOU TOO SHALL BURN FOR WHAT YOU DID"
+        menu magnus_hunt:
+            "What do you do?"
+            "Hide":
+                menu magnus_hide:
+                    "Where do you hide?"
+                    "Staff Room":
+                        "You rush back to the staff room and crouch under the little table."
+                        idk "YOU...WILL...BURN"
+                        "..."
+                        idk "COME...BACK...*cough*...HERE"
+                        "You hear violent coughing outside."
+                        idk "I...*cough*...WON'T...*cough*...LET-*cough*"
+                        "*thud*"
+                        idk "*groan*"
+                        "You slowly open the door and see the ghostly man curled up on the ground in a coughing fit."
+                    "Examination Room":
+                        "You turn the corner and go into the examination room."
+                        "There's not much to hide behind besides the chair, better than nothing."
+                        idk "THE FIRE...WILL...CONSUME YOU"
+                        "The door flies open and the ghostly man is standing there, fire all around his body."
+                        idk "YOU...WON'T...DO IT...AGAIN"
+                        "He charges at you but you're able to roll out of the way and run out the door."
+                        jump magnus_hide
+                    "Solitary Confinement":
+                        "You run back to the solitary confinement room."
+                        "Shutting the door behind you, you realize that there's nothing to hide behind in here..."
+                        idk "WHY...WON'T...YOU...BURN"
+                        "The footsteps are getting closer."
+                        idk "I...CAN'T...DIE...THIS...WAY"
+                        "The ghost pounds on the door."
+                        idk "DON'T...*cough* LEAVE ME...*cough*"
+                        "He continues pounding on the door."
+                        idk "*cough cough* THE FIRE...IT HURTS..."
+                        "The pounding on the door stops."
+                        "You cautiously open it and find the ghostly man leaning against a wall, coughing uncontrollably."
+            "Attack (uses money)":
+                "You whip out your incense and quickly light it."
+                "The smoke coming from it causes the ghost to stumble back."
+                idk "WHAT ARE...*cough* YOU DOING?!"
+                "The ghost doubles over coughing."
+                idk "THE FIRE, THE SMOKE, NEVER AGAIN"
+                "He screams and collapses."
+            # invoke name? Idk how that'd come up
+        label after_magnus_hunt:
+            "Thing here"
 
     # This ends the game.
 
