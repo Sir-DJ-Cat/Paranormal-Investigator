@@ -378,13 +378,105 @@ label start:
                 "I'm done in this room.":
                     jump sub_ghost_look
         "Kitchen":
-            "Place."
+            $ sub_rooms -= 1
+            "You walk into the Kitchen."
+            abby "I used to love cooking, one of my many hobbies."
+            p1 "You think you'd have left anything behind?"
+            abby "Probably not...unless it's a utensil I probably ate it."
+            $ knife_checked = False
+            menu sub_kitchen_look:
+                "Investigate..."
+                "Knife block":
+                    $ knife_checked = True
+                    "The knife block you noticed was empty earlier, now has a single butcher knife occupying one of the slots."
+                    p1 "Does that knife look familiar?"
+                    abby "Not paticulary."
+                    "You take the knife out and find the end dripping with blood."
+                    p1 "How about now?"
+                    "Abby looks down at the large bloodstain around her heart."
+                    abby "It would make sense..."
+                    "She trails off"
+                    jump sub_kitchen_look
+                "Cabinet":
+                    "There's a row of cabinets above the countertop, each with a glass front."
+                    "You notice that one, however, is missing that front."
+                    p1 "How peculiar..."
+                    "You peer inside and notice droplets of dried blood on the wood base."
+                    if knife_checked:
+                        p1 "Not much to go on, but seems to fit with the knife..."
+                    else:
+                        "I wonder what caused this..."
+                    jump sub_kitchen_look
+                "I'm done in this room.":
+                    jump sub_ghost_look
         "Living Room":
-            "Place."
+            $ sub_rooms -= 1
+            "You walk into the Living Room."
+            abby "I forgot what a cozy room this is."
+            abby "I'm sure I left something in here."
+            p1 "Let's look then."
+            menu sub_living_look:
+                "Investigate..."
+                "Bookshelf":
+                    abby "Too bad my books aren't here anymore."
+                    "You examine at the old white bookshelf."
+                    "The shelves are empty and covered in dust."
+                    # idk what you'd find here
+                    jump sub_living_look
+                "Storage Chest":
+                    "There's a strange brown chest hidden in the corner behind the couch."
+                    p1 "What's this for?"
+                    abby "I'm not sure, must've been a family heirloom or something."
+                    "You tug on the chest's lid, but it won't open."
+                    abby "Let me try."
+                    "Abby puts her hand on the lid and it explodes open."
+                    "Black mist swirls out of it as voices whisper and scream."
+                    idk "LIES...BLOOD OF THE INNOCENT...LEFT FOR ANOTHER"
+                    "As soon as it started, everything stops."
+                    p1 "That seems...unusual."
+                    "You cautiously peer inside the chest, and find a bouquet of black roses."
+                    p1 "Were these roses always black?"
+                    abby "I...do remember getting those."
+                    abby "I don't know who gave them to me, but I hated them."
+                    p1 "It seems they're trying to tell us something...but what..."
+                    jump sub_living_look
+                "I'm done in this room.":
+                    jump sub_ghost_look
         "Dining Room":
-            "Place."
+            $ sub_rooms -= 1
+            "You walk into the Dining Room."
+            "You're a bit uneasy after what happened the first time you came in this room."
+            abby "Sorry did I put you on edge?"
+            p1 "A little."
+            menu sub_dining_look:
+                "Investigate..."
+                "Sliding Glass Door":
+                    "You cautiously approach the sliding glass door."
+                    "The cracks and blood from earlier are still there."
+                    p1 "Do you remember anything of what happened here?"
+                    abby "...the door was broken by someone."
+                    abby "It was early in the morning."
+                    abby "I came running out and they were standing in the shards."
+                    abby "..."
+                    abby "That's all I can remember, sorry."
+                    p1 "No that's helpful."
+                    if found_sledge:
+                        p1 "I bet they used the sledgehammer we found in the garage."
+                    else:
+                        "We can try and find what they used to break it."
+                    jump sub_dining_look
+                "Table":
+                    "You examine the wooden table, it's set for two."
+                    abby "I had it set like this the day I died."
+                    p1 "Are you sure?"
+                    abby "Yes...I was planning to come back here after the wedding."
+                    abby "I guess I never got a chance to leave though."
+                    jump sub_dining_look
+                "I'm done in this room.":
+                    jump sub_ghost_look
         "Garage":
             $ sub_rooms -= 1
+            $ found_sledge = False
             "You walk into the Garage."
             abby "I never liked this place, always too cold."
             p1 "As garages tend to be."
@@ -400,6 +492,7 @@ label start:
                     p1 "Hmm, let's keep looking."
                     jump sub_garage_look
                 "Paint Cans":
+                    $ found_sledge = True
                     "There's a bunch of empty paint cans sitting in the corner."
                     abby "I remember planning to paint the house."
                     abby "I don't think I ever got around to it though..."
