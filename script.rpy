@@ -597,7 +597,7 @@ label start:
     "more traveling dialogue"
 
     scene bg room
-    "You arrive at the old \"mental hospital\"".
+    "You arrive at the old \"mental hospital\"."
     "There's a sign out front that's overgrown with vines, it's text having faded over the years."
     "Damn this place looks spooky..." # average phasmo player doing apoc challenge on sunnyside
     menu mental_first_look:
@@ -618,60 +618,137 @@ label start:
             "As you turn to leave you notice the same scratch marks on the walls and door."
     label after_mental_first_look: # this next part feels way too long but idk
         "After investigating osme of the main rooms you begin inspecting some of the patient \"rooms\"."
-        "You're unsure if it's merely the age and state of the buildings but the rooms look more like prison cells...barebone cells at that."
-        "You come across a room whose door has numerous white scratches and markings."
-        "The little window on it is blacked out as well."
-        "After a moment of hesitation (this place is *really* creepy after all), you open the door and step inside."
-        "You're immediately met with a blast of cold air."
-        "You begin to step inside when the room is engulfed in fire."
-        "An inhuman scream comes out of nowhere as the fire rages closer to you."
-        "Then, out of the flames the ghostly form of a young man rises."
-        idk "YOU TOO SHALL BURN FOR WHAT YOU DID"
-        menu magnus_hunt:
-            "What do you do?"
-            "Hide":
-                menu magnus_hide:
-                    "Where do you hide?"
-                    "Staff Room":
-                        "You rush back to the staff room and crouch under the little table."
-                        idk "YOU...WILL...BURN"
-                        "..."
-                        idk "COME...BACK...*cough*...HERE"
-                        "You hear violent coughing outside."
-                        idk "I...*cough*...WON'T...*cough*...LET-*cough*"
-                        "*thud*"
-                        idk "*groan*"
-                        "You slowly open the door and see the ghostly man curled up on the ground in a coughing fit."
-                    "Examination Room":
-                        "You turn the corner and go into the examination room."
-                        "There's not much to hide behind besides the chair, better than nothing."
-                        idk "THE FIRE...WILL...CONSUME YOU"
-                        "The door flies open and the ghostly man is standing there, fire all around his body."
-                        idk "YOU...WON'T...DO IT...AGAIN"
-                        "He charges at you but you're able to roll out of the way and run out the door."
-                        jump magnus_hide
-                    "Solitary Confinement":
-                        "You run back to the solitary confinement room."
-                        "Shutting the door behind you, you realize that there's nothing to hide behind in here..."
-                        idk "WHY...WON'T...YOU...BURN"
-                        "The footsteps are getting closer."
-                        idk "I...CAN'T...DIE...THIS...WAY"
-                        "The ghost pounds on the door."
-                        idk "DON'T...*cough* LEAVE ME...*cough*"
-                        "He continues pounding on the door."
-                        idk "*cough cough* THE FIRE...IT HURTS..."
-                        "The pounding on the door stops."
-                        "You cautiously open it and find the ghostly man leaning against a wall, coughing uncontrollably."
-            "Attack (uses money)":
-                "You whip out your incense and quickly light it."
-                "The smoke coming from it causes the ghost to stumble back."
-                idk "WHAT ARE...*cough* YOU DOING?!"
-                "The ghost doubles over coughing."
-                idk "THE FIRE, THE SMOKE, NEVER AGAIN"
-                "He screams and collapses."
-            # invoke name? Idk how that'd come up
-        label after_magnus_hunt:
-            "Thing here"
+    "You're unsure if it's merely the age and state of the buildings but the rooms look more like prison cells...barebone cells at that."
+    "You come across a room whose door has numerous white scratches and markings."
+    "The little window on it is blacked out as well."
+    "After a moment of hesitation (this place is *really* creepy after all), you open the door and step inside."
+    "You're immediately met with a blast of cold air."
+    "You begin to step inside when the room is engulfed in fire."
+    "An inhuman scream comes out of nowhere as the fire rages closer to you."
+    "Then, out of the flames the ghostly form of a young man rises."
+    idk "YOU TOO SHALL BURN FOR WHAT YOU DID"
+    menu magnus_hunt:
+        "What do you do?"
+        "Hide":
+            menu magnus_hide:
+                "Where do you hide?"
+                "Staff Room":
+                    "You rush back to the staff room and crouch under the little table."
+                    idk "YOU...WILL...BURN"
+                    "..."
+                    idk "COME...BACK...*cough*...HERE"
+                    "You hear violent coughing outside."
+                    idk "I...*cough*...WON'T...*cough*...LET-*cough*"
+                    "*thud*"
+                    idk "*groan*"
+                    "You slowly open the door and see the ghostly man curled up on the ground in a coughing fit."
+                "Examination Room":
+                    "You turn the corner and go into the examination room."
+                    "There's not much to hide behind besides the chair, better than nothing."
+                    idk "THE FIRE...WILL...CONSUME YOU"
+                    "The door flies open and the ghostly man is standing there, fire all around his body."
+                    idk "YOU...WON'T...DO IT...AGAIN"
+                    "He charges at you but you're able to roll out of the way and run out the door."
+                    jump magnus_hide
+                "Solitary Confinement":
+                    "You run back to the solitary confinement room."
+                    "Shutting the door behind you, you realize that there's nothing to hide behind in here..."
+                    idk "WHY...WON'T...YOU...BURN"
+                    "The footsteps are getting closer."
+                    idk "I...CAN'T...DIE...THIS...WAY"
+                    "The ghost pounds on the door."
+                    idk "DON'T...*cough* LEAVE ME...*cough*"
+                    "He continues pounding on the door."
+                    idk "*cough cough* THE FIRE...IT HURTS..."
+                    "The pounding on the door stops."
+                    "You cautiously open it and find the ghostly man leaning against a wall, coughing uncontrollably."
+        "Attack (uses money)":
+            "You whip out your incense and quickly light it."
+            "The smoke coming from it causes the ghost to stumble back."
+            idk "WHAT ARE...*cough* YOU DOING?!"
+            "The ghost doubles over coughing."
+            idk "THE FIRE, THE SMOKE, NEVER AGAIN"
+            "He screams and collapses."
+        # invoke name? Idk how that'd come up
+    label after_magnus_hunt:
+        p1 "Hey there."
+    idk "*cough* What do you want?"
+    p1 "For starters, what's your name?"
+    idk "Why should I tell you?"
+    p1 "Because I'm here to get rid of the ghost haunting this place, I assume that's you?"
+    "He gives you murderous look."
+    p1 "Now we can do this the easy way, or we can do this the hard way." # pretty much bluffing
+    magnus "Fine, my name is Magnus. Can you go away now?"
+    p1 "Nice to meet you Magnus, and no, I won't."
+    "..."
+    p1 "Magnus, do you remember how you died?"
+    magnus "What? No, I don't."
+    magnus "All I remember is...burning. Flames eating away at my flesh."
+    p1 "Were you here when you died, or somewhere else?"
+    magnus "How the hell would I know?!"
+    p1 "...alright. I'm gonna look around; you're welcome to come with me."
+    "He rolls his eyes."
+    # add something about only having time to look at 3 rooms
+    $ patient_book = True
+    $ mental_rooms = 3.
+    menu mental_ghost_look:
+        "Go to..."
+        "Reception":
+            "You walk back to the front reception room."
+            magnus "Why are you over here? There's nothing interesting."
+            p1 "You'd be surprised."
+            "He scoffs."
+            menu mental_recep_look:
+                "Investigate..."
+                "Receptionist's Desk":
+                    "You examine the old, wooden desk. It's somehow still standing despite it's age."
+                    "You open one of the drawers with a screech; there's a binder inside."
+                    p1 "What's this..."
+                    "Opening the binder you find it's a list of patients admitted to the hospital."
+                    "Magnus peers over your shoulder."
+                    magnus "What's that?"
+                    p1 "I thought you weren't interested?"
+                    magnus "Shut up."
+                    p1 "It's a list of patients."
+                    magnus "Am I in there?"
+                    "You flip through it looking for his name."
+                    p1 "Indeed you are, Magnus H."
+                    magnus "Does it say what I was sent here for?"
+                    p1 "\"Aggressive tendencies, prone to outbursts of anger.\""
+                    magnus "...that's it?"
+                    p1 "Says here that you injured several family members."
+                    magnus "...I...didn't remember that."
+                    "He regains his composure."
+                    magnus "I'm sure they deserved it anyways."
+                    jump mental_recep_look
+                "Stack of Papers":
+                    "You sift through the stack of yellowed paper on the floor."
+                    "It seems to be a mix of medical notes and strange black symbols."
+                    p1 "Any of these look familiar?"
+                    magnus "Not paticulary."
+                    "One sheet catches your eye."
+                    p1 "Here we go, Magnus H., October 30th, 1904."
+                    p1 "\"Brought the patient in for the daily injection, preparing him for the...ritual...\""
+                    magnus "Ritual?"
+                    p1 "\"Patient resisted but staff calmed him down with the usual method.\""
+                    p1 "\"Injection was not recieved well, patient screamed, convulsed, etc.\""
+                    p1 "\"All is ready for tomorrow.\""
+                    magnus "...and?!"
+                    p1 "The rest is covered by the black symbols."
+                    magnus "..."
+                    jump mental_recep_look
+                "I'm done in this room.":
+                    jump mental_ghost_look
+        "Examination Room":
+            "Thing"
+        "Solitary Confinement":
+            "Thing"
+        "Staff Room":
+            "Thing"
+        "Room 39" if patient_book:
+            "THING"
+    label after_mental_ghost_look:
+        "i like fire"
 
     # This ends the game.
 
