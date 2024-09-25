@@ -325,7 +325,10 @@ label start:
                     abby "Aha! I told you."
                     "You reach in there and pull out a small diamond wedding ring."
                     abby "..."
-                    # add more here
+                    p1 "Is that yours?"
+                    abby "It *was*."
+                    abby "Guess I never got to wear it." # this is so lame but I can't write
+                    "THIS IS TEXT REMINDING LUKE TO ADD VAR TEXT IF THEY FIND THE LOCKET FIRST"
                     jump sub_master_look
                 # maybe one more place to check out here?
                 "I'm done in this room.":
@@ -373,7 +376,10 @@ label start:
                     p1 "I think it was this picture."
                     abby "The one of me and my...fiance..."
                     p1 "Do you think he was the one who killed you?"
-                    # add more here
+                    abby "I-I-I don't know."
+                    abby "Why would he?"
+                    p1 "..."
+                    abby "I guess we'll...keep looking."
                     jump sub_nursery_look
                 "I'm done in this room.":
                     jump sub_ghost_look
