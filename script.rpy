@@ -273,7 +273,7 @@ label start:
     $ sub_rooms = 4
     menu sub_ghost_look:
         "Go to..."
-        "Guest Bedroom":
+        "Guest Bedroom" if sub_rooms > 0:
             $ sub_rooms -= 1
             "You walk into the Guest Bedroom."
             abby "I wasn't in here that much..."
@@ -290,7 +290,7 @@ label start:
             p1 "Maybe we could find your friend? She might know more about your death."
             abby "Maybe...I don't remember her ever coming back after I died."
             jump sub_ghost_look
-        "Master Bedroom":
+        "Master Bedroom" if sub_rooms > 0:
             $ sub_rooms -= 1
             "You walk into the Master Bedroom."
             abby "I know this room, it's mine!"
@@ -331,7 +331,7 @@ label start:
                 "I'm done in this room.":
                     jump sub_ghost_look
             # that ends the master bedroom
-        "Nursery":
+        "Nursery" if sub_rooms > 0:
             $ sub_rooms -= 1
             "You walk into the Nursery."
             abby "Aw, how cute."
@@ -377,7 +377,7 @@ label start:
                     jump sub_nursery_look
                 "I'm done in this room.":
                     jump sub_ghost_look
-        "Kitchen":
+        "Kitchen" if sub_rooms > 0:
             $ sub_rooms -= 1
             "You walk into the Kitchen."
             abby "I used to love cooking, one of my many hobbies."
@@ -409,7 +409,7 @@ label start:
                     jump sub_kitchen_look
                 "I'm done in this room.":
                     jump sub_ghost_look
-        "Living Room":
+        "Living Room" if sub_rooms > 0:
             $ sub_rooms -= 1
             "You walk into the Living Room."
             abby "I forgot what a cozy room this is."
@@ -442,7 +442,7 @@ label start:
                     jump sub_living_look
                 "I'm done in this room.":
                     jump sub_ghost_look
-        "Dining Room":
+        "Dining Room" if sub_rooms > 0:
             $ sub_rooms -= 1
             "You walk into the Dining Room."
             "You're a bit uneasy after what happened the first time you came in this room."
@@ -474,7 +474,7 @@ label start:
                     jump sub_dining_look
                 "I'm done in this room.":
                     jump sub_ghost_look
-        "Garage":
+        "Garage" if sub_rooms > 0:
             $ sub_rooms -= 1
             $ found_sledge = False
             "You walk into the Garage."
@@ -510,9 +510,25 @@ label start:
                 "I'm done in this room":
                     jump sub_ghost_look
             # done with the garage
-
+        "I'm out of time" if sub_rooms == 0:
+            p1 "Looks like I'm out of time."
     label after_sub_ghost_look:
-        "Skibidi."
+        abby "Oh...alright."
+    abby "..."
+    abby "Thanks for trying to help."
+    abby "Really! I haven't had anyone to talk to since I, you know."
+    p1 "No problem."
+    abby "So what are you going to do now?"
+    p1 "I'm going to think it over and come back at the end of the week with my decision."
+    abby "Ok. See you then."
+    "Abby smiles solemnly as you walk out the door."
+    
+    "Something about traveling"
+
+    # office
+    scene bg room
+
+    "CONFIRMING THAT NOTHING IS BROKEN AND THE GAME CAN END"
 
     # This ends the game.
 
