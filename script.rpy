@@ -73,7 +73,7 @@ label start:
             "Why would I pass up a job?"
             jump jared_call
     label after_jared_call:
-        idk "My name is Jared, and my wife and I just moved into a new home."
+        idk "My name is Jared, my wife and I just moved into a new home."
         jared "And there's been a lot of...strange activity."
     menu jared_call_questions:
         "Ask..."
@@ -86,27 +86,27 @@ label start:
             $ abby_name = False
         "Do you have any records from the previous owners?":
             jared "Yeah, actually."
-            jared "There was only one previous owner, a woman named Abby."
+            jared "There was only one previous owner, a woman named Abby, she lived with a roommate before it was sold to us."
             $ abby_name = True
             p1 "Anything else?"
     label after_jared_call_questions:
         jared "Do you think you could come take a look?"
     menu jared_call_final_question:
         "Say..."
-        "I sure can.":
-            jared "Great! When can you come?"
-            p1 "I'll come right away."
-            jared "Perfect, see you soon!"
+        "Of course, I'll need the night alone to look around.":
+            jared "Perfect, we're already at a Hotel. When can you come?"
+            p1 "I'll be right over."
+            jared "Thank you, thank you! Call me if you need anything, /he Repeats his Phone Number for you/"
         "I don't think so.":
             "I really need this job..."
             jump jared_call_final_question
     label after_jared_call_final_question:
         "Time to paranormal the investigate"
-    "Something about traveling here"
+    "You get into your Sedan, loaded up with some of the essentials, and drive to the address..."
 
     scene bg room # Entryway
 
-    "Time to take a look around"
+    "Time to take a look around, a Cold-spot is an easy sign to look for in a heated building..."
     menu sub_first_look:
         "Go to..."
         "Guest Bedroom":
@@ -200,44 +200,55 @@ label start:
             "You remember the name that was mentioned by Jared earlier."
             p1 "I invoke your true name:"
             p1 "ABBY"
-            "The ghost suddenly withdraws and collapses on the ground."
+            "The ghost slowly calms down with a twisted look of realization, and pathetically collapses on the ground."
             # play sound "abby_cry.mp3"
     label after_abby_hunt:
-        # Wowza
+        # Wowza (wowza)
         "You look at the strange ghost woman crying on the ground."
-    "You notice the temperature is no longer freezing."
+    "You notice the temperature is no longer freezing, colder than the surrounding rooms- but bearable."
     menu abby_hello:
         "What do you say?"
         "Hello?":
-            "She looks up at you, her face no longer angry and distorted."
-            idk "h-h-hello?"
-            p1 "Hi. What's your name?"
-            idk "..."
+            "She looks up at you, her face no longer angry and distorted, but entirely distraught."
             if abby_name:
-                idk "Well as you said earlier, my name is Abby."
+                idk "h-h-hello?"
+                p1 "Hi. What's your name?"
+                abby "..."
+                abby "Well as you said earlier, my name is Abby."
             else:
                 abby "Abby. My name is Abby."
         "Are you OK?":
-            "The girl nods without looking up."
-            p1 "Did I hurt you?"
-            "There's no response."
-            "Slowly the girl stands up and looks at you, her face no longer angry and distorted."
-            idk "Hi..."
-            p1 "Who are you?"
             if abby_name:
-                idk "Well as you said earlier, my name is Abby."
+                "Abby nods without looking up."
+                p1 "Did I hurt you?"
+                "There's no response."
+                "Slowly Abby stands up and looks at you, her face no longer angry and distorted, but confused, maybe annoyed, you can't really tell you don't talk to many girls.."
+                abby "Hi..."
+                p1 "Who are you?"
+                abby "Well as you said earlier, my name is Abby."
             else:
+                p1 "Did I hurt you?"
+                "There's no response."
+                "Slowly the girl stands up and looks at you, her face no longer angry and distorted, but confused, maybe annoyed, you can't really tell; you don't talk to many girls.."
+                p1 "who are you?"
                 abby "I'm Abby."
         "Get up.":
-            "The girl does not respond."
-            p1 "C'mon, stop crying and get up."
-            "The girl slowly gets up and looks at you."
-            "Her face is no longer angry and distorted, but she still looks unhappy.."
-            idk "What do you want?"
-            p1 "What is your name?"
             if abby_name:
-                idk "Well as you said earlier, my name is Abby."
+                "Abby does not respond."
+                p1 "C'mon, Abby, please stop crying and get up."
+                "Abby Looks up at you hopelessly while sobbing, eventually resolving enough to hold back her ghastly tears and stand"
+                "Her face is no longer angry and distorted, but she still looks unhappy..."
+                abby "What do you want?" 
+                p1 "What is your name?"
+                abby "Well as you said earlier, my name is Abby."
             else:
+                "The girl does not respond."
+                p1 "C'mon, stop crying and get up."
+                "The girl slowly gets up and looks at you."
+                "The girl burrows her face into her arms even more initially, but is finally resolved enough to face you, and slowly gets up, looking at you."
+                "Her face is no longer angry and distorted, but she still looks unhappy.."
+                idk "What do you want?"
+                p1 "What is your name?"
                 abby "My name is Abby."
     label after_abby_hello:
         p1 "Well Abby, I'm not sure if you've noticed"
@@ -245,6 +256,7 @@ label start:
     abby "..."
     abby "I'm sorry."
     abby "As you've noticed, I'm dead."
+    p1 "/you nod moronically like this is new information/"
     abby "I don't know how it happened exactly but..."
     abby "Sometimes I lose control, and become some sort of monster."
     p1 "I noticed."
