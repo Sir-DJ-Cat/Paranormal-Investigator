@@ -1030,9 +1030,41 @@ label start:
     menu hugh_question:
         "Ask..."
         "What happened?":
-            "Place"
+            idk "I...don't know."
+            idk "All I remember is a sharp pain in my head, then I woke up like this."
+            "He gestures to the axe in his head."
+            hugh "My name is Hugh, by the way."
+            p1 "Nice to meet you."
+            hugh "And you."
         "Who are you?":
+            hugh "My name is Hugh, I was a lumberjack in these woods for many-a-year."
+            p1 "Pleasure to meet you Hugh."
+            hugh "And you."
+    label after_hugh_question:
+        hugh "May I inquire as to why you're here?"
+    p1 "I was hired to investigate the hauntings here."
+    hugh "Aye, that'd be me."
+    p1 "What I find is that hauntings are usually tied to the ghost's death."
+    p1 "Do you remember how you died?"
+    hugh "Sadly not, besides it having to do with the axe in my head."
+    p1 "Right."
+    p1 "In that case, let's take a look around."
+    hugh "Sounds good to me."
+    $ camp_rooms = 2
+    menu camp_ghost_look:
+        "Go to..."
+        "Campfire":
             "Place"
+        "Ranger Station":
+            "Place"
+        "Trailer":
+            "Place"
+        "Cemetary":
+            "Place"
+        "I'm out of time.":
+            "Place"
+    label after_camp_ghost_look:
+        "Silly."
 
     # This ends the game.
 
