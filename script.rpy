@@ -13,13 +13,19 @@ define p1 = Character("You")
 define abby = Character("Abby")
 image A_P = "Abby_place.png"
 define magnus = Character("Magnus")
+image M_P = "Magnus_place.png"
 define hugh = Character("Hugh")
+image H_P = "Hugh_place.png"
 define malerie = Character("Malerie")
 
 # Side Characters
 define ll = Character("Landlord")
 define jared = Character("Jared")
 define sean = Character("Sean")
+define mrs = Character("Ms. Wadell")
+
+# Backgrounds
+image office = "office.png"
 
 # The game starts here.
 
@@ -29,7 +35,7 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg room
+    scene office
     play music "detective.wav" loop
 
     # This shows a character sprite. A placeholder is used, but you can
@@ -552,12 +558,14 @@ label start:
     p1 "I'm going to think it over and come back at the end of the week with my decision."
     abby "Ok. See you then."
     "Abby smiles solemnly as you walk out the door."
-    
+    hide A_P
     "Something about traveling"
 
+    stop music fadeout 1.0
     # office
-    scene bg room
+    scene office
 
+    play music "detective.wav" loop
     # "CONFIRMING THAT NOTHING IS BROKEN AND THE GAME CAN END"
 
     "Well that was certainly interesting." # goofy ahh
@@ -568,7 +576,7 @@ label start:
     "Let me sleep on it..."
     # fade or something???
 
-    scene bg room
+    scene office
 
     "What a beautiful morning" # it's raining
     "Time to think about what happened yester-"
@@ -604,6 +612,9 @@ label start:
     p1 "Of course, I'll head out right now."
     "more traveling dialogue"
 
+    stop music fadeout 1.0
+    play music "hospital.wav" loop
+
     scene bg room
     "You arrive at the old \"mental hospital\"."
     "There's a sign out front that's overgrown with vines, it's text having faded over the years."
@@ -633,6 +644,7 @@ label start:
     "You're immediately met with a blast of cold air."
     "You begin to step inside when the room is engulfed in fire."
     "An inhuman scream comes out of nowhere as the fire rages closer to you."
+    show M_P
     "Then, out of the flames the ghostly form of a young man rises."
     idk "YOU TOO SHALL BURN FOR WHAT YOU DID"
     menu magnus_hunt:
@@ -641,6 +653,7 @@ label start:
             menu magnus_hide:
                 "Where do you hide?"
                 "Staff Room":
+                    hide M_P
                     "You rush back to the staff room and crouch under the little table."
                     idk "YOU...WILL...BURN"
                     "..."
@@ -649,16 +662,21 @@ label start:
                     idk "I...*cough*...WON'T...*cough*...LET-*cough*"
                     "*thud*"
                     idk "*groan*"
+                    show M_P
                     "You slowly open the door and see the ghostly man curled up on the ground in a coughing fit."
                 "Examination Room":
+                    hide M_P
                     "You turn the corner and go into the examination room."
                     "There's not much to hide behind besides the chair, better than nothing."
                     idk "THE FIRE...WILL...CONSUME YOU"
+                    show M_P
                     "The door flies open and the ghostly man is standing there, fire all around his body."
                     idk "YOU...WON'T...DO IT...AGAIN"
                     "He charges at you but you're able to roll out of the way and run out the door."
+                    hide M_P
                     jump magnus_hide
                 "Solitary Confinement":
+                    hide M_P
                     "You run back to the solitary confinement room."
                     "Shutting the door behind you, you realize that there's nothing to hide behind in here..."
                     idk "WHY...WON'T...YOU...BURN"
@@ -669,6 +687,7 @@ label start:
                     "He continues pounding on the door."
                     idk "*cough cough* THE FIRE...IT HURTS..."
                     "The pounding on the door stops."
+                    show M_P
                     "You cautiously open it and find the ghostly man leaning against a wall, coughing uncontrollably."
         "Attack (uses money)":
             "You whip out your incense and quickly light it."
@@ -879,11 +898,141 @@ label start:
     magnus "What for? Gonna try and help me remember more of the awful things that happened to me?"
     p1 "Something like that." # smirking
     magnus "Well....see you."
+    hide M_P
     "Magnus walks away."
+    "Traveling text :3"
 
-    scene bg room
+    stop music fadeout 1.0
+    play music "detective" loop
+
+    scene office
     "Yet another thing to worry about."
     "Time to get some sleep..."
+
+    scene office
+    "Hopefully I have some time to think about the cases tod-"
+    # play sound "ring.mp3"
+    "*ring ring*"
+    "One day I'll get a break..."
+    p1 "Hello?"
+    idk "HEY!"
+    "Ow...that was loud."
+    p1 "Y-yes?" # wincing
+    idk "CAN YOU HEAR ME?"
+    p1 "YES I can hear you."
+    "It's an eldery lady."
+    idk "GOOD!"
+    idk "ARE YOU A GHOST HUNTER?"
+    p1 "Um, you could say that."
+    p1 "I'm more into the investi-"
+    idk "PERFECT! THE YELLOW PAGES NUMBER WAS CORRECT THEN."
+    p1 "..."
+    idk "I HAVE A GHOST PROBLEM SON, AND I NEED IT FIXED ASAP."
+    p1 "Could I get your name?"
+    mrs "JANE WADELL, BUT YOU CAN CALL ME MS. WADELL."
+    menu mrs_call_questions:
+        "Ask..."
+        "Do you have examples of the activity?":
+            mrs "EXAMPLES? HMM."
+            mrs "WELL I RUN THIS CAMPSITE YOU SEE."
+            "You turn the volume down, it's starting to really hurt your ear." # whenever bendy joins a call
+            mrs "The campers are complaining about all sorts of random crap."
+            mrs "Something about blue fire? And axes floating around?"
+            mrs "Wouldn't have cared until something REAL strange happened last night."
+            mrs "I was sitting in my trailer, on property, when all of the sudden the windows were blacked out!"
+            mrs "Then there was this awful screaming, like a man was being chopped to bits."
+            mrs "I knew there was something up, so that's why I need you to come take a look."
+        "Has anyone owned your property previously?":
+            mrs "WELL IT'S A CAMPSITE YOU SEE."
+            "You turn the volume down, it's starting to really hurt your ear."
+            mrs "My dad bought it back in the 70s, not sure who owned it previously."
+            mrs "As far I can tell it was just woods."
+            mrs "There was supposedly a cabin from the 1800s there at some point, but I don't remember ever seeing it."
+    label after_mrs_call_questions:
+        mrs "Is that all you need?"
+    p1 "Should be. Is it OK if I come over now?"
+    mrs "Of course, the sooner this is dealt with the better."
+    "traveling here"
+
+    stop music fadeout 1.0
+    play music "campfire.wav" fadein 2.0
+    scene bg room
+
+    "You arrive at the campsite in the evening after a long travel time." # dont like the phrasing here
+    "Not as many places to check out as the previous locations, hopefully this will be easier." # is this weird?
+    menu camp_first_look:
+        "Go to..."
+        "Campfire":
+            "There's a spot for a campfire with logs for sitting around it."
+            "It's a nice little setup, perfect for making smores."
+        "Ranger Station":
+            "A ranger station sits a little distance away from the campfire."
+            "Presumably there'd be a park ranger here, but none seems to be on duty."
+            "You wonder if the ghosts drove them away."
+        "Trailer":
+            "This is the trailer Ms. Wadell was talking about."
+            "The windows don't appear to be blacked out, must've been from the ghost."
+        "Cemetary":
+            "You notice a little cemetary away from everything else."
+            "A giant weeping willow tree stands above a few tombstones."
+    label after_camp_first_look:
+        "You start walking back to your car to get ghost detection equipment."
+    "As you pass the campfire circle, a fire suddenly roars to life."
+    "You stare at it for a second, confused as to what started it."
+    show H_P
+    "The fire then turns blue, and a man manifests in it."
+    idk "WHO ARE YE WHO DARES TO ENTER MY DOMAIN."
+    idk "I HAVE DONE NOTHING WRONG, BEGONE!"
+    "You hesitate, this ghost does not seem as aggresive as the others."
+    "An axe flies by your head."
+    idk "I WILL NOT FALL VICTIM TO YOUR FALSE CLAIMS AGAIN!"
+    menu hugh_hunt: # naming probably inconsistent but idc
+        "What do you do?"
+        "Hide":
+            menu hugh_hide:
+                "Where do you hide?" # add vars so you cant repeat
+                "Ranger Station":
+                    hide H_P
+                    "You run over to the Ranger Station and go inside."
+                    "There's not much in here, so you hide under the bed."
+                    "You hear heavy footsteps outside."
+                    "The door flies open."
+                    idk "WHERE IST THOU WHO SEEKS MY DOWNFALL?"
+                    show H_P
+                    "The bed you're hiding under is flung away, the man standing over you with his axe."
+                    idk "YOU HAD THE CHANCE TO TAKE YOUR RETRIBUTION ELSEWHERE, NO YOU DIE!"
+                    "He swings his axe but misses, and hits the wall instead."
+                    "You take this opprotunity to run back outside."
+                    jump hugh_hide
+                "Trailer":
+                    hide H_P
+                    "You run into Ms. Wadell's trailer and duck behind a table."
+                    "Heavy footsteps are heard outside."
+                    idk "COME BACK AND FACE YOUR CRIMES!"
+                    "The footsteps stop, and a loud crack noise is heard, followed by the man screaming."
+                    menu hugh_step:
+                        "What do you do?"
+                        "Step outside.":
+                            show H_P
+                            jump after_hugh_hunt
+        "Attack (uses money)":
+            "You light your trusty incense and wave it around."
+            "The smoke drifts torward the man and he recoils."
+            idk "HOW DARE YOU CONTINUE TO PERSECUTE ME!"
+            "The man continues walking forward, but stops short."
+            "A loud crack noise is heard and he screams."
+            jump after_hugh_hunt
+    label after_hugh_hunt:
+        "The man is holding his head and shaking it back and forth."
+    idk "Why...I never...I wouldn't..."
+    "He drops his hands and hangs his head in shame."
+    idk "Aye, I am beat."
+    menu hugh_question:
+        "Ask..."
+        "What happened?":
+            "Place"
+        "Who are you?":
+            "Place"
 
     # This ends the game.
 
