@@ -689,7 +689,7 @@ label start:
     p1 "...alright. I'm gonna look around; you're welcome to come with me."
     "He rolls his eyes."
     # add something about only having time to look at 3 rooms
-    $ patient_book = True
+    $ patient_book = False
     $ mental_rooms = 3.
     menu mental_ghost_look:
         "Go to..."
@@ -702,6 +702,7 @@ label start:
             menu mental_recep_look:
                 "Investigate..."
                 "Receptionist's Desk":
+                    $ patient_book = True
                     "You examine the old, wooden desk. It's somehow still standing despite it's age."
                     "You open one of the drawers with a screech; there's a binder inside."
                     p1 "What's this..."
@@ -743,7 +744,32 @@ label start:
         "Examination Room":
             "Thing"
         "Solitary Confinement":
-            "Thing"
+            $ mental_rooms -= 1
+            "You walk into the Solitary Confinement room."
+            "It's eerily silent."
+            magnus "Those voices...I wonder whose they are..."
+            "You don't hear anything."
+            menu mental_confine_look:
+                "Investigate..."
+                "Walls":
+                    "As you approach the walls, strange symbols appear, as if being etched in by a knife."
+                    p1 "Odd..."
+                    p1 "Recognize any of those?"
+                    magnus "Nah."
+                    "How helpful..."
+                    "The symbols all appear to have a similar design; an X with a circle in the middle."
+                    jump mental_confine_look
+                "Floor":
+                    "The floor, that was white, albeit with rips, earlier seems to turn deep red where Magnus steps."
+                    p1 "Hey, you notice that?"
+                    magnus "Huh?"
+                    p1 "The floor, when you step on the floor in here you leave blotches of red behind."
+                    magnus "Oh...cool?"
+                    p1 "It means you have a connection to this room, I'd assume, but I don't know what that connection would be."
+                    magnus "Some investigator you are."
+                    jump mental_confine_look
+                "I'm done in this room.":
+                    jump mental_ghost_look
         "Staff Room":
             $ mental_rooms -= 1
             "You walk into the Staff Room."
