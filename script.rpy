@@ -11,6 +11,7 @@ define p1 = Character("You")
 
 # Ghosts
 define abby = Character("Abby")
+image A_P = "Abby_place.png"
 define magnus = Character("Magnus")
 define hugh = Character("Hugh")
 define malerie = Character("Malerie")
@@ -29,7 +30,7 @@ label start:
     # images directory to show it.
 
     scene bg room
-    play music "detective_office.wav"
+    play music "detective.wav" loop
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -106,6 +107,9 @@ label start:
         "Time to paranormal the investigate"
     "You get into your Sedan, loaded up with some of the essentials, and drive to the address..."
 
+    stop music fadeout 1.0
+    play music "house.wav" loop
+
     scene bg room # Entryway
 
     "Time to take a look around, a Cold-spot is an easy sign to look for in a heated building..."
@@ -146,6 +150,7 @@ label start:
     "The sliding glass door in front of you starts cracking as if it's being hit."
     # play sound "abby_screech.mp3"
     "Blood splatters across the glass door as a woman screams."
+    show A_P
     "A woman wearing a bloodstained wedding dress floats through the door."
     idk "COME BACK TO BREAK MY HEART?!"
     menu abby_hunt:
@@ -154,6 +159,7 @@ label start:
             menu abby_hide:
                 "Where do you hide?"
                 "Hall Closet":
+                    hide A_P
                     "You quickly run around the corner into the hall closet."
                     "You can hear the ghost looking around outside"
                     idk "WHERE ARE YOU?!"
@@ -166,8 +172,10 @@ label start:
                     menu abby_closet:
                         "What do you do?"
                         "Step out":
+                            show A_P
                             jump after_abby_hunt
                 "Master Bedroom":
+                    hide A_P
                     "You quickly rush to the master bedroom, closing the door and hiding behind the bed."
                     # play sound "abby_hum.mp3"
                     "You hear someone humming outside, a sound that seems to be getting closer."
@@ -177,6 +185,7 @@ label start:
                     "The ghost appears in front of you and goes to attack."
                     jump abby_hide
                 "Guest Bedroom":
+                    hide A_P
                     "You turn the corner and run to the guest bedroom by the entryway."
                     "You hide in the corner behind the small bed."
                     idk "WHERE DID YOU GO?!"
@@ -279,9 +288,8 @@ label start:
             p1 "And of course, if you remember anything that would be very helpful."
             abby "Right, I'll do my best."
         "On second thought...":
-            p1 "Let me do my job."
-            abby "Oh...ok."
-            abby "Just, um, let me know if you need me..."
+            "She might be able to help me."
+            jump abby_really
     label after_abby_really:
         "Now then, where to start..."
     "I don't have too much time."
@@ -691,9 +699,10 @@ label start:
     # add something about only having time to look at 3 rooms
     $ patient_book = False
     $ mental_rooms = 3.
+    $ found_papers = False
     menu mental_ghost_look:
         "Go to..."
-        "Reception":
+        "Reception" if mental_rooms > 0:
             $ mental_rooms -= 1
             "You walk back to the front reception room."
             magnus "Why are you over here? There's nothing interesting."
@@ -741,9 +750,37 @@ label start:
                     jump mental_recep_look
                 "I'm done in this room.":
                     jump mental_ghost_look
-        "Examination Room":
-            "Thing"
-        "Solitary Confinement":
+        "Examination Room" if mental_rooms > 0:
+            $ mental_rooms -= 1
+            "You walk into the Examination Room."
+            magnus "Even as a ghost, I've always hated this room..."
+            menu mental_exam_look:
+                "Investigate..."
+                "Examination Chair":
+                    "You look at the chair with scratches on it."
+                    p1 "Do you know how it got like this?"
+                    if found_papers:
+                        magnus "Me or someone else must've been trying to escape."
+                        magnus "I wonder if that burning feeling I have relates to this."
+                    else:
+                        magnus "Not really."
+                        magnus "I must've been in here at some point, since I always feel uncomfortable in here."
+                        p1 "I'm sure the blood on the floor doesn't help."
+                    jump mental_exam_look
+                "Instruments Table":
+                    "There's a little cart/table with medical instruments on it."
+                    "Under it there's a notebook."
+                    "You open it up and flip through it."
+                    p1 "Looks like a diary of some sort."
+                    magnus "Ha, what loser here kept a diary?"
+                    p1 "A doctor, from the looks of it."
+                    p1 "\"The ritual is almost ready. We've been injecting Magnus daily for the past month.\""
+                    p1 "\"As much as it goes against my oath as a doctor, my devotion to the Dark Father is more important.\""
+                    magnus "Dark father? These guys were more psycho than I was."
+                    jump mental_exam_look
+                "I'm done in this room.":
+                    jump mental_ghost_look
+        "Solitary Confinement" if mental_rooms > 0:
             $ mental_rooms -= 1
             "You walk into the Solitary Confinement room."
             "It's eerily silent."
@@ -770,7 +807,7 @@ label start:
                     jump mental_confine_look
                 "I'm done in this room.":
                     jump mental_ghost_look
-        "Staff Room":
+        "Staff Room" if mental_rooms > 0:
             $ mental_rooms -= 1
             "You walk into the Staff Room."
             p1 "Remember this room?"
@@ -786,6 +823,7 @@ label start:
                     "You notice a slip of paper behind the pill bottles and syringes."
                     p1 "\"NERVE STIMULANT\". That doesn't sound very pleasant."
                     p1 "\"RITUAL\"..."
+                    # could probably add more here
                     magnus "What kind of drug is that?"
                     p1 "I don't know, better keep looking."
                     jump mental_staff_look
@@ -799,10 +837,53 @@ label start:
                     jump mental_staff_look
                 "I'm done in this room.":
                     jump mental_ghost_look
-        "Room 39" if patient_book:
-            "THING"
+        "Room 39" if mental_rooms > 0:
+            $ mental_rooms -= 1
+            if patient_book:
+                "You walk into the room that was noted as being Magnus'."
+            else:
+                "This is the room where Magnus appeared."
+            magnus "Hey, this is, er, was my room."
+            p1 "Brilliant detective, you're going to put me out of a job."
+            "Magnus gives you a harsh look."
+            menu mental_39_look:
+                "Investigate..."
+                "Bed":
+                    "You look at the barebones bed."
+                    "It's a thin matress on a cheap metal frame."
+                    magnus "Top notch accomodations."
+                    "You notice a metal U-shaped object attached to the wall next to the bed." # like somewhere where you'd attach a chain
+                    "Across the room is a length of bloodied chain."
+                    p1 "I'm guessing these two go together."
+                    magnus "..."
+                    p1 "Guess they didn't want you escaping. Still, seems like overkill."
+                "Scorch marks":
+                    "You notice scorch marks all over the walls."
+                    p1 "How could these have gotten here?"
+                    if patient_book:
+                        magnus "Could it have...nah that's stupid."
+                        p1 "What?"
+                        magnus "The ritual, the chain, the drugs they gave me."
+                        magnus "And, the burning feeling I have, like I'm constantly on fire."
+                        magnus "You think those are tied together?"
+                        p1 "Wouldn't surprise me, but hard to say for sure."
+                        magnus "Right..."
+                    jump mental_39_look
+                "I'm done in this room.":
+                    jump mental_ghost_look
+        "I'm out of time" if mental_rooms == 0:
+            p1 "Looks like I'm out of time."
     label after_mental_ghost_look:
-        "i like fire"
+        magnus "Finally."
+    p1 "I'll be back at the end of the week."
+    magnus "What for? Gonna try and help me remember more of the awful things that happened to me?"
+    p1 "Something like that." # smirking
+    magnus "Well....see you."
+    "Magnus walks away."
+
+    scene bg room
+    "Yet another thing to worry about."
+    "Time to get some sleep..."
 
     # This ends the game.
 
