@@ -694,6 +694,7 @@ label start:
     menu mental_ghost_look:
         "Go to..."
         "Reception":
+            $ mental_rooms -= 1
             "You walk back to the front reception room."
             magnus "Why are you over here? There's nothing interesting."
             p1 "You'd be surprised."
@@ -744,7 +745,34 @@ label start:
         "Solitary Confinement":
             "Thing"
         "Staff Room":
-            "Thing"
+            $ mental_rooms -= 1
+            "You walk into the Staff Room."
+            p1 "Remember this room?"
+            magnus "Pft, never even came in here, at least, I don't remember it."
+            menu mental_staff_look:
+                "Investigate..."
+                "Medical Cabinet":
+                    "You open the wooden cabinet to reveal all sorts of medicine."
+                    "Most of the labels appear to be scratched off, probably not very safe."
+                    p1 "I wonder what these are for."
+                    magnus "You're the investigator."
+                    p1 "An investigator, not a doctor." # lol
+                    "You notice a slip of paper behind the pill bottles and syringes."
+                    p1 "\"NERVE STIMULANT\". That doesn't sound very pleasant."
+                    p1 "\"RITUAL\"..."
+                    magnus "What kind of drug is that?"
+                    p1 "I don't know, better keep looking."
+                    jump mental_staff_look
+                "Patient List":
+                    "You notice a list of patients on a piece of paper lying on the table."
+                    "It's a table showing each patient's reaction to different drugs."
+                    p1 "\"ALEXANDER - NERVE STIMULANT - DECEASED\""
+                    p1 "\"EMILY - OPTIC SEVERANCE - DECEASED\""
+                    p1 "\"MAGNUS - RITUAL - THE FATHER IS PLEASED\"" # fc5 vibes
+                    magnus "What the hell did they do to me..."
+                    jump mental_staff_look
+                "I'm done in this room.":
+                    jump mental_ghost_look
         "Room 39" if patient_book:
             "THING"
     label after_mental_ghost_look:
