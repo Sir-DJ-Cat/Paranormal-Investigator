@@ -1031,7 +1031,7 @@ label start:
         "Ask..."
         "What happened?":
             idk "I...don't know."
-            idk "All I remember is a sharp pain in my head, then I woke up like this."
+            idk "All I remember is sudden darkness, a sharp pain in my head, and then I woke up like this."
             "He gestures to the axe in his head."
             hugh "My name is Hugh, by the way."
             p1 "Nice to meet you."
@@ -1054,17 +1054,149 @@ label start:
     menu camp_ghost_look:
         "Go to..."
         "Campfire":
-            "Place"
+            $ camp_rooms -= 1
+            "You walk over to the campfire."
+            hugh "Sorry about earlier, don't know what came over me."
+            p1 "No worries, it's part of the job."
+            menu camp_camp_look:
+                "Investigate..."
+                "Campfire":
+                    "You look at the logs that have been arranged for the optimal campfire."
+                    "There's no scorch marks on them, despite the blue fire earlier."
+                    p1 "What's your relation to fire?"
+                    hugh "Eh?"
+                    p1 "Do you remember dying by fire? Or starting any notable ones?"
+                    hugh "No, I don't think so. Fire was merely a way to warm oneself."
+                    jump camp_camp_look
+                "Logs":
+                    "There's 4 logs in a circle around the campfire."
+                    "They all look very old."
+                    "Next to one appears to be a very old lamp."
+                    p1 "What's this?"
+                    hugh "That's my trusty lamp!"
+                    p1 "You remember it?"
+                    hugh "How could I not? It guided me through many a dark night."
+                    p1 "I see..."
+                    "You notice a crack in the glass."
+                    p1 "Do you know how this got broken?"
+                    "Hugh examines it."
+                    hugh "Must've been thrown or something, I can't imagine how it'd get that way with normal usage."
+                    jump camp_camp_look
+                "I'm done in this area.":
+                    jump camp_ghost_look
         "Ranger Station":
-            "Place"
+            $ camp_rooms -= 1
+            "You walk into the ranger station."
+            # add var text from hunt
+            p1 "This place familiar?"
+            hugh "Doesn't seem to be."
+            menu camp_ranger_look:
+                "Investigate..."
+                "Desk":
+                    "You go over to the desk."
+                    "There's a bunch of papers here, most appear to be forms and memos."
+                    hugh "What is all of this?"
+                    p1 "Just ranger stuff it seems."
+                    "You check the drawers, and in one of them is a mini bouquet of flowers."
+                    "It's three yellow flowers tied together with some sort of cord." # find actual flower name
+                    hugh "I remember those."
+                    hugh "They were for my little girl; she died of the fever when she was a child."
+                    hugh "..."
+                    hugh "I meant to put these on her grave out there, but I never got the chance."
+                    jump camp_ranger_look
+                "Pinboard":
+                    "You walk up to the pinboard."
+                    "It's filled with various notices and info."
+                    "One in paticular catches your eye, it's a very old newspaper clipping."
+                    p1 "\"Revisiting the site of the 1872 Lumberjack Murder\"."
+                    "Most of it is cut out or faded, but you can make out small parts of it." # dont like the phrasing
+                    p1 "\"Mob of people...suspected serial killer...child missing.\""
+                    hugh "Is that about me? Is that how I died?"
+                    p1 "It seems very likely."
+                    "Hugh looks on sadly."
+                    jump camp_ranger_look
+                "I'm done in this room.":
+                    jump camp_ghost_look
         "Trailer":
-            "Place"
+            $ camp_rooms -= 1
+            "You walk into the trailer."
+            hugh "Hey, I was just here earlier."
+            p1 "Ah, you were haunting Ms. Wadell right?"
+            hugh "Some old lady, yes. Something about her name seemed...familiar."
+            p1 "Let's see if we can find anything then."
+            menu camp_trailer_look:
+                "Investigate..."
+                "Table":
+                    "You look at the table." # this sounds stupid
+                    "It's covered with random papers and documents, most relating to the campsite property."
+                    p1 "Looks like Ms. Wadell is struggling to pay for the property's upkeep."
+                    "There's a yellowed envelope in the pile, addressed to \"WADELL\". It has a stamp from the 70s on it."
+                    hugh "Well, aren't you going to open it?"
+                    p1 "Um, I think that's illegal..."
+                    hugh "I'll do it then, they can't prosecute a ghost anyways."
+                    "Hugh opens the envelope and pulls out a very old letter, appearing to have been typed on a typewriter."
+                    hugh "\"Dear Mr. Wadell, I pray my letter reaches you in time. You do not understand what curse lies on that property.\""
+                    hugh "\"I cannot elaborate too much, as I'm afraid I do not know the whole story, but I do know this much:\""
+                    hugh "\"Your family name will reawaken a great injustice that was done many years ago.\""
+                    hugh "\"If you wish for your family's safety, DO NOT PURCHASE THAT PLOT OF LAND.\""
+                    p1 "So the name \"Wadell\" apparently has something to do with it."
+                    p1 "Unfortunate that they bought it anyway..."
+                    jump camp_trailer_look
+                "Photo on the wall":
+                    "There's an old family photo on the wall."
+                    "Pictured is what you assume is the Wadell family when the bought the property in the 70s."
+                    "Behind them is a log cabin and a campfire."
+                    p1 "Assuming that's the same campfire, the cabin should be right around here."
+                    hugh "They must've demolished it...that was my house you know."
+                    jump camp_trailer_look
+                "I'm done in this room.":
+                    jump camp_ghost_look
         "Cemetary":
-            "Place"
+            $ camp_rooms -= 1
+            "You walk over to the cemetary."
+            hugh "What a solemn place."
+            hugh "I wonder if anyone ever visits it, or takes note of the tombstones."
+            menu camp_cemetary_look:
+                "Investigate..."
+                "Tombstones":
+                    "There's a few tombstones scattered around the old willow tree."
+                    "Most have their names etched off, except a small one that reads \"EMILY\"."
+                    hugh "That was my...wee daughter."
+                    hugh "Her mother passed from the fever during the winter, so it was just me and her for a while."
+                    hugh "One time in the summer, we were out in the woods cutting down some trees when she collapsed."
+                    hugh "I tried to get a doctor to come look at her, but they thought I was cursed."
+                    hugh "I...I couldn't do anything..."
+                    p1 "..."
+                    # add var text if they saw the flowers earlier
+                    jump camp_cemetary_look
+                "Willow Tree":
+                    "You walk around the weeping willow tree, looking for any markings."
+                    "The only one you can find is a crude \"W\" on the back."
+                    p1 "W for Wadell maybe?"
+                    hugh "Perhaps. But why is that the only one?"
+                    p1 "I'm afraid I don't know."
+                    # feel like there should be more here
+                    jump camp_cemetary_look
+                "I'm done in this area.":
+                    jump camp_gho
         "I'm out of time.":
-            "Place"
+            p1 "Well it looks like I'm out of time Hugh."
     label after_camp_ghost_look:
-        "Silly."
+        hugh "Aye, it is getting quite late."
+    hugh "I appreciate you coming out here, trying to help and all."
+    p1 "No problem, I'll be back at the end of the week. Hopefully with a solution."
+    hugh "Thank you kindly."
+    hide H_P
+
+    "Traveling"
+    
+    scene office
+    "I feel bad for Hugh."
+    "I don't know exactly what happened, but the name Wadell definitely meant something."
+    "Time to rest, gotta start thinking about how to handle all these things."
+
+    scene office
+    "TOP O' THE MORNING TO YA"
 
     # This ends the game.
 
